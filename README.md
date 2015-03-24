@@ -48,7 +48,7 @@ At last you can call node app.js, and should be running at localhost:3001 :)
 - Safari
 
 ### Disclaimer
-Please keep in mind, that we are not experts at NodeJS and Trello-Train
+Please keep in mind, that we are not experts at NodeJS and "Webhooks for Trello"
 was not made with security in mind, but made with the perspective of
 "ease of use" - anything that is an issue or unwisely handled for an
 example: functions, methods, datastructures, etc. Please report them
