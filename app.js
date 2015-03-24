@@ -1,3 +1,5 @@
+// Please notice that we are not affiliated, associated, authorized, endorsed by or in any way officially connected to Trello, Inc. (www.trello.com).
+
 // Requirements of Modules
 //  Trello module
 var Trello = require("node-trello");
