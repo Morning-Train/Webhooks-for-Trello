@@ -1,0 +1,786 @@
+/*
+Created By: Morning Train Technologies
+Url: http://morningtrain.dk/
+Github repository: https://github.com/Morning-Train/Webhooks-for-trello
+
+
+This contains all the styles for Webhooks for Trello. Find description and setup guide on github.
+
+Feel free to edit in the css, so it scale your needs.
+
+
+ ---- TABLE OF CONTENT -----
+
+- normalize.css - v3.0.2 | MIT License | git.io/normalize
+- Clearfix
+- Global Styles
+- Page Loader
+- Header
+- Tabs
+- Modal Boxes
+- Error handling boxes
+- Add New Record
+- List overview of all records
+- Webhooks page specific style
+
+*/
+
+
+/*==================================
+=            CSS STARTS            =
+==================================*/
+/* normalize */
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+/* Clearfix */
+.clearfix:before,  
+.clearfix:after {  
+    content: " ";  
+    display: table;  
+}
+
+.clearfix:after {  
+    clear: both;  
+}
+
+.clearfix {  
+    *zoom: 1;
+}
+
+/* Global styles */
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Titillium Web', sans-serif;
+    background: #ecf0f1;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8em;
+    font-weight: bold;
+    padding-top: 50px;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.space {
+    height: 100px;
+    clear: both;
+}
+
+.small-space {
+    height: 50px;
+    clear: both;
+}
+
+input:focus {
+    outline: 0;
+}
+
+*:focus {
+    outline: 0;
+}
+
+.no-scroll {
+    overflow:hidden;
+}
+
+input, select {
+    background: #fff;
+}
+
+/*===================================
+=            Page Loader            =
+===================================*/
+#loader {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #fff url('img/preloader.svg') no-repeat center center;
+    background-size: 210px 100px;
+    z-index:9999;
+}
+
+/*==============================
+=            Header            =
+==============================*/
+header {
+    display: block;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    background: #fff;
+    border-bottom: 1px solid #dadada;
+}
+
+header h1 {
+    font-size: 1em;
+    font-weight: 700;
+    font-style: italic;
+    padding-top: 0;
+    line-height: 50px;
+    color: #888888;
+}
+
+/*============================
+=            Tabs            =
+============================*/
+.tab {
+    width: 210px;
+    height: 60px;
+    position: fixed;
+    text-align: center;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.tab-desc {
+    width: 150px;
+    float: left;
+}
+
+.tab p {
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 60px;
+    color: #fff;
+}
+
+.tab-img {
+    width: 60px;
+    float: left;
+}
+
+.tab-img p {
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 850px) {
+    .tab {
+        width: 50%;
+        height: 60px;
+        float: left;
+        position: relative;
+    }
+
+    .tab-desc {
+        width: 100%;
+    }
+
+    .tab-img {
+        display: none;
+    }
+}
+
+/*=================================
+=            Modal box            =
+=================================*/
+.modal-wrap {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+    z-index: 99999;
+}
+
+.webhooks {
+    display: none;
+}
+
+.close-btn-fix {
+    width: 88%;
+    max-width: 1100px;
+    height: 90%;
+    margin: 30px auto;
+    position: relative;
+    z-index: 1;
+}
+
+.modalbox {
+    width: 100%;
+    max-width: 1100px;
+    height: 100%;
+    background-color: #fff;
+    margin: 30px auto;
+    z-index: 99;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.modalbox fieldset {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.modal-web fieldset {
+    width: 100%;
+    max-width: 630px;
+    margin: 0 auto;
+    float: none;
+}
+
+.close-btn {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    -webkit-border-radius: 9999px;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */    
+    -moz-border-radius: 9999px;  /* Firefox 1-3.6 */
+    border-radius: 9999px; 
+    right: -17px;
+    top: -18px;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    line-height: 45px;
+    z-index: 9999;
+    cursor: pointer;
+    -webkit-transition: background .5s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: background .5s;
+    -o-transition: background .5s;
+    transition: background .5s;
+}
+
+.close-btn:hover {
+    background-color: #2ecc71;
+}
+
+.modal-form {
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.modal-form input, .modal-form select {
+    width: 90%;
+    height: 50px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    box-sizing: border-box;
+    border: none;
+    text-indent: 10px;
+    border: 1px solid #dadada;
+    -webkit-border-radius: 0;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */    
+    -moz-border-radius: 0;  /* Firefox 1-3.6 */     
+    border-radius: 0;  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+}
+
+.modal-web input, .modal-web select {
+    width: 100%;
+}
+
+input#modal-submit, input#modal-webhooks-recreate, input#modal-webhooks-submit, input#modal-rmv, input#modal-webhooks-rmv {
+    color: #fff;
+    border: none;
+    -webkit-transition: background .5s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: background .5s;
+    -o-transition: background .5s;
+    transition: background .5s;
+    width: 48%;
+    display: block;
+    float: left;
+}
+
+input#modal-rmv {
+    float: right;
+}
+
+.remove-record {
+    margin-right: 0;
+}
+
+input#modal-submit, input#modal-rmv {
+    background: #2ecc71;
+}
+
+input#modal-submit:hover, input#modal-rmv:hover {
+    background: #34ec82;
+}
+
+input#modal-webhooks-submit, input#modal-webhooks-rmv, input#modal-webhooks-recreate {
+    background: #3498db;
+    width: 100%;
+    max-width: 630px;
+    float: none;
+    margin: 10px auto;
+}
+
+input#modal-webhooks-submit:hover, input#modal-webhooks-rmv:hover, input#modal-webhooks-recreate:hover {
+    background: #6ec7fa;
+}
+
+.modal-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+fieldset#check-btn {
+    width: 100%;
+    float: left;
+    padding: 5px 0 50px 0px;
+}
+
+h3 {
+    font-weight: 300;
+    font-size: 1em;
+}
+
+fieldset#check-btn input {
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+}
+
+fieldset#check-btn label {
+    width: 21.4%;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+@media screen and (max-width: 1077px) {
+    fieldset#check-btn label {
+        width: 29%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    fieldset#check-btn label {
+        width: 44.2%;
+        margin-left: 5px;
+    }
+
+    .close-btn-fix, .modalbox {
+        margin: 10px auto;
+    }
+
+    .close-btn {
+        top: 0px;
+        right: 0px;
+        height: 55px;
+        width: 100%;
+        line-height: 55px;
+        border-radius: 0;
+        -webkit-border-radius: 0;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */    
+        -moz-border-radius: 0;  /* Firefox 1-3.6 */     
+    }
+
+    .modalbox fieldset {
+        float: none;
+        width: 100%;
+    }
+
+    .modal-form input, .modal-form select {
+        width: 100%;
+    }
+
+    .modal-form {
+        padding-top: 80px;
+    }
+
+    input#modal-submit, input#modal-rmv {
+        float: none;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 674px) {
+    fieldset#check-btn label {
+        width: 43%;
+    }
+}
+
+@media screen and (max-width: 565px) {
+    fieldset#check-btn label {
+        width: 41%;
+    }
+}
+
+
+@media screen and (max-width: 495px) {
+    fieldset#check-btn label {
+        width: 87%;
+        margin-left: 5px;
+    }
+
+    fieldset#check-btn {
+      padding: 5px 0 20px 0px;
+    }
+}
+
+/*======================================
+=            Error handling            =
+======================================*/
+#submit-success, #submit-error {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 250px;
+    height: 120px;
+    text-align: center;
+    z-index: 9999999;
+}
+
+#submit-success h3, #submit-error h3 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1em;
+    margin: 0;
+    line-height: 120px;
+}
+
+#submit-success {
+    display: none;
+    background-color: #2ecc71;
+}
+
+#submit-error {
+    display: none;
+    background-color: #e74c3c;
+}
+
+#approve-wrap {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 999999;
+}
+
+.approve-alert {
+    margin: auto;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    width: 300px;
+    height: 260px;
+    text-align: center;
+    background-color: #fff;
+    border: 2px solid #dadada;
+}
+
+.approve-alert p {
+    padding: 20px 5px 10px 5px;
+}
+
+.approve-alert button {
+    display: block;
+    border: 0;
+    background: #2ecc71;
+    width: 80%;
+    height: 50px;
+    margin: 20px auto;
+    color: #fff;
+    font-weight: 700;
+    -webkit-transition: background .5s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: background .5s;
+    -o-transition: background .5s;
+    transition: background .5s;
+}
+
+.approve-alert button:hover {
+    background: #34ec82;
+}
+
+.approve-alert button.blue-bg {
+    background: #3498db;
+}
+
+.approve-alert button.blue-bg:hover {
+    background: #6ec7fa;
+}
+
+/*=======================================
+=            Add New Record             =
+=======================================*/
+#notify-content {
+    display: block;
+}
+
+#new-custom-frm, #web-custom-frm {
+    width: 50%;
+    max-width: 700px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+@media screen and (max-width: 960px) {
+    #new-custom-frm, #web-custom-frm {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #new-custom-frm, #web-custom-frm {
+        width: 95%;
+    }
+}
+
+#lists {
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+#new-custom-frm input, #new-custom-frm select, #web-custom-frm input, #web-custom-frm select {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: none;
+    text-indent: 10px;
+    border: 1px solid #dadada;
+}
+
+input#frm-submit, input#web-submit {
+    color: #fff;
+    border: none;
+    margin-top: 20px;
+    -webkit-transition: background .5s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: background .5s;
+    -o-transition: background .5s;
+    transition: background .5s;
+}
+
+input#frm-submit {
+    background: #2ecc71;
+}
+
+input#frm-submit:hover {
+    background: #34ec82;
+}
+
+input#web-submit {
+    background: #3498db;
+}
+
+input#web-submit:hover {
+    background: #6ec7fa;
+}
+
+#new-custom-frm label, #web-custom-frm label {
+    margin-bottom: 6px;
+    display: block;
+}
+
+fieldset#new-check-btn {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+fieldset#new-check-btn input {
+    width: 5%;
+    height: 15px;
+    display: inline-block;
+}
+
+fieldset#new-check-btn label {
+    width: 85%;
+    display: inline-block;
+    padding-left: 2%;
+}
+
+.checkbox {
+    width: 50%;
+    float: left;
+}
+
+/*=========================================
+=       List overview of all records      =
+=========================================*/
+#sub-frm, #web-sub-frm {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid #dadada;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#sub-frm h2, #web-sub-frm h2 {
+    margin: 30px auto;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+@media screen and (max-width: 320px) {
+    #sub-frm h2, #web-sub-frm h2 {
+        font-size: 1.3em;
+    }
+}
+
+input#sub-frm-submit {
+    background: #2ecc71;
+    color: #fff;
+    border: none;
+    float: right;
+    width: 100px;
+    height: 40px;
+    margin: 30px 5% 0px 0px;
+    -webkit-transition: background .5s; /* For Safari 3.1 to 6.0 */
+    -moz-transition: background .5s;
+    -o-transition: background .5s;
+    transition: background .5s;
+}
+
+input#sub-frm-submit:hover {
+    background: #34ec82;
+}
+
+#field-info, #web-field-info {
+    clear: both;
+    width: 90%;
+    margin: 45px auto 0 auto;
+    height: 40px;
+    border: 1px solid #dadada;
+    box-sizing: border-box;
+}
+
+.field-info-item {
+    width: 24.9%;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-right: 1px solid #dadada;
+}
+
+.field-info-item p, .edit p {
+    font-weight: 700;
+}
+
+.edit {
+    height: 40px;
+    width: 8.8%;
+}
+
+.edit img, .edit-web img {
+    display: block;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.field-info-item, .edit {
+    text-align: center;
+    line-height: 40px;
+    color: #000;
+    float: left;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#sub-frm fieldset, fieldset.current_webhooks {
+    clear: both;
+    border: 1px solid #dadada;
+    border-top:none;
+    width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+input[type="text"] {
+    color: #000;
+}
+
+input[type="text"]:disabled {
+    color: #95a5a6;
+}
+
+.img-swap {
+    width: 19px;
+}
+
+@media screen and (max-width: 750px) {
+    .res-hide {
+        display: none;
+    }
+
+    .field-info-item {
+        width: 35.3%;
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+}
+
+@media screen and (max-width: 416px) {
+    .field-info-item {
+        width: 35%;
+        overflow: hidden;
+    }
+}
+
+/*======================================
+=    Webhooks specific styles start    =
+======================================*/
+
+textarea#web-desc, textarea#modal-desc {
+    max-width: 100%;
+    min-width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    border: 1px solid #dadada;
+    margin-bottom: 20px;
+    padding: 12px 0px 0px 10px;
+}
+
+textarea#modal-desc {
+    padding: 12px 10px 10px 10px;
+    resize: none;
+    height: 150px;
+}
+
+.web-btn:hover {
+    background: #3498db;
+}
+
+/* Webhooks status bar */
+
+#status-bar {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.status-color {
+    width: 50%;
+    float: left;
+    text-align: center;
+}
+
+.status-color p {
+    line-height: 38px;
+}
+
+.red-bar, .green-bar {
+    width: 59%;
+    margin: 0 auto;
+    height: 5px;
+}
+
+.red-bar {
+    background: #e74c3c;
+}
+
+.green-bar {
+    background: #2ECC71;
+}
+
+/* Does the webhook exist at Trello */
+fieldset.doesNotExistAtTrello {
+    border-left: 3px solid #e74c3c;
+}
+
+fieldset.doesExistAtTrello {
+    border-left: 3px solid #2ECC71;
+}
