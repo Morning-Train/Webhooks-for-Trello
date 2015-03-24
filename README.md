@@ -1,9 +1,7 @@
-# Webhooks for Trello
-###### Having trouble on having a overview of all your webhooks? "Webhooks for Trello" is a graphical user interface for handling webhooks.
-
+## Webhooks for Trello
 Webhooks for Trello is made in NodeJS.
 
-## Setting up "Webhooks for Trello".
+### Setting up "Webhooks for Trello".
 #### 1:
 You need to have NodeJS installed, you can get it here:
 https://nodejs.org/download/
@@ -37,14 +35,14 @@ config.trelloUserToken = "<<Insert your user token>>"; // Read https://trello.co
 #### 5:
 At last you can call node app.js, and should be running at localhost:3001 :)
 
-## Browser support
+### Browser support
 - IE10+
 - Opera
 - Chrome
 - Firefox
 - Safari
 
-## Disclaimer
+### Disclaimer
 Please keep in mind, that we are not experts at NodeJS and Trello-Train
 was not made with security in mind, but made with the perspective of
 "ease of use" - anything that is an issue or unwisely handled for an
