@@ -1,3 +1,4 @@
+"use strict";
 // Please notice that we are not affiliated, associated, authorized, endorsed by or in any way officially connected to Trello, Inc. (www.trello.com).
 
 // Requirements of Modules
@@ -7,11 +8,11 @@ var async = require("async");
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/webhooksForTrello');
+var mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/webhooksForTrello");
 
 // Loading config
-var config = require('./config/config');
+var config = require("./config/config");
 
 // Webhooks Schema for webhooks
 var WebHooksSchema = new mongoose.Schema({
@@ -35,10 +36,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Using our static client front-end system (look at index.html and scripts.js for more info about this)
-app.use(express.static('./client'));
+app.use(express.static("./client"));
 
 // Requiring the controller of webhooks and including the app, async, WebHook model and t (trello object)
-require('./controller/webhooks')(app, async, WebHook, t);
+require("./controller/webhooks")(app, async, WebHook, t);
 
 // Get request of getting all boards owned by user at trello.
 app.get("/getBoards", function (req, res) {
