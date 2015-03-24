@@ -20,11 +20,12 @@ In your terminal write:
 
 
 The following modules will be installed:
-    "async": "^0.9.0",
-    "body-parser": "^1.12.2",
-    "express": "^4.12.3",
-    "mongoose": "^3.8.25",
-    "node-trello": "^1.1.0"
+- async, 0.9.0
+- body-parser, 1.12.2
+- express, 4.12.3
+- mongoose, 3.8.25
+- node-trello, 1.1.0
+
 
 #### 4:
 When your modules is installed, you need to open up config/config.js
