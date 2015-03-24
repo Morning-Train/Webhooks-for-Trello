@@ -30,8 +30,11 @@ The following modules will be installed:
 #### 4:
 When your modules is installed, you need to open up config/config.js
 Inside here you need set:
-config.trelloApplicationKey = "<<Insert your application key>>"; // Read https://trello.com/docs/gettingstarted/index.html#getting-an-application-key
-config.trelloUserToken = "<<Insert your user token>>"; // Read https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user
+config.trelloApplicationKey = "<<Insert your application key>>";
+Read https://trello.com/docs/gettingstarted/index.html#getting-an-application-key
+
+config.trelloUserToken = "<<Insert your user token>>";
+Read https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user
 
 #### 5:
 At last you can call node app.js, and should be running at localhost:3001 :)
