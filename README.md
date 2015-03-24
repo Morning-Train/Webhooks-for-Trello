@@ -30,10 +30,10 @@ The following modules will be installed:
 #### 4:
 When your modules is installed, you need to open up config/config.js
 Inside here you need set:
-config.trelloApplicationKey = "<<Insert your application key>>";
+    config.trelloApplicationKey = "<<Insert your application key>>";
 Read https://trello.com/docs/gettingstarted/index.html#getting-an-application-key
 
-config.trelloUserToken = "<<Insert your user token>>";
+    config.trelloUserToken = "<<Insert your user token>>";
 Read https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user
 
 #### 5:
