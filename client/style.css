@@ -16,12 +16,11 @@ Feel free to edit in the css, so it scale your needs.
 - Global Styles
 - Page Loader
 - Header
-- Tabs
 - Modal Boxes
 - Error handling boxes
 - Add New Record
 - List overview of all records
-- Webhooks page specific style
+- Webhooks status bar
 
 */
 
@@ -33,17 +32,17 @@ Feel free to edit in the css, so it scale your needs.
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
 
 /* Clearfix */
-.clearfix:before,  
-.clearfix:after {  
-    content: " ";  
-    display: table;  
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
 }
 
-.clearfix:after {  
-    clear: both;  
+.clearfix:after {
+    clear: both;
 }
 
-.clearfix {  
+.clearfix {
     *zoom: 1;
 }
 
@@ -126,57 +125,6 @@ header h1 {
     color: #888888;
 }
 
-/*============================
-=            Tabs            =
-============================*/
-.tab {
-    width: 210px;
-    height: 60px;
-    position: fixed;
-    text-align: center;
-    cursor: pointer;
-    z-index: 99;
-}
-
-.tab-desc {
-    width: 150px;
-    float: left;
-}
-
-.tab p {
-    font-size: 1em;
-    font-weight: 700;
-    line-height: 60px;
-    color: #fff;
-}
-
-.tab-img {
-    width: 60px;
-    float: left;
-}
-
-.tab-img p {
-    font-size: 1.3em;
-    font-weight: 700;
-}
-
-@media screen and (max-width: 850px) {
-    .tab {
-        width: 50%;
-        height: 60px;
-        float: left;
-        position: relative;
-    }
-
-    .tab-desc {
-        width: 100%;
-    }
-
-    .tab-img {
-        display: none;
-    }
-}
-
 /*=================================
 =            Modal box            =
 =================================*/
@@ -233,7 +181,7 @@ header h1 {
     position: absolute;
     height: 45px;
     width: 45px;
-    -webkit-border-radius: 9999px;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */    
+    -webkit-border-radius: 9999px;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */
     -moz-border-radius: 9999px;  /* Firefox 1-3.6 */
     border-radius: 9999px; 
     right: -17px;
@@ -271,8 +219,8 @@ header h1 {
     border: none;
     text-indent: 10px;
     border: 1px solid #dadada;
-    -webkit-border-radius: 0;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */    
-    -moz-border-radius: 0;  /* Firefox 1-3.6 */     
+    -webkit-border-radius: 0;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+    -moz-border-radius: 0;  /* Firefox 1-3.6 */
     border-radius: 0;  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
 }
 
@@ -371,8 +319,8 @@ fieldset#check-btn label {
         width: 100%;
         line-height: 55px;
         border-radius: 0;
-        -webkit-border-radius: 0;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */    
-        -moz-border-radius: 0;  /* Firefox 1-3.6 */     
+        -webkit-border-radius: 0;  /* Safari 3-4, iOS 1-3.2, Android 1.6- */
+        -moz-border-radius: 0;  /* Firefox 1-3.6 */
     }
 
     .modalbox fieldset {
@@ -649,7 +597,7 @@ input#sub-frm-submit:hover {
 }
 
 .field-info-item {
-    width: 24.9%;
+    width: 33.3%;
     height: 40px;
     padding: 0;
     border: none;
@@ -662,7 +610,7 @@ input#sub-frm-submit:hover {
 
 .edit {
     height: 40px;
-    width: 8.8%;
+    width: 20%;
 }
 
 .edit img, .edit-web img {
@@ -708,22 +656,20 @@ input[type="text"]:disabled {
     }
 
     .field-info-item {
-        width: 35.3%;
         padding-left: 4%;
         padding-right: 4%;
+    }
+
+    .edit {
+        width: 10%;
     }
 }
 
 @media screen and (max-width: 416px) {
     .field-info-item {
-        width: 35%;
         overflow: hidden;
     }
 }
-
-/*======================================
-=    Webhooks specific styles start    =
-======================================*/
 
 textarea#web-desc, textarea#modal-desc {
     max-width: 100%;
@@ -745,8 +691,9 @@ textarea#modal-desc {
     background: #3498db;
 }
 
-/* Webhooks status bar */
-
+/*===========================================
+=            Webhooks status bar            =
+===========================================*/
 #status-bar {
     width: 300px;
     margin: 0 auto;
