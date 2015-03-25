@@ -1,9 +1,30 @@
 $(document).ready(function() {
 
-    var success = $('#submit-success');
+    // Global variables
+    var body = $('body');
 
+    // Webhooks specific variables
+    var webhooks = $('.webhooks');
+
+    // Modal variables
+    var modalSubmit = $('#modal-webhooks-submit');
+    var modalReCreate = $('#modal-webhooks-recreate');
+
+    // Error handling
+    var recordSuccess = $('#submit-success');
+    var recordError = $('#submit-error');
+
+    // Alert Choice
+    var yes = $('#yes');
+    var no = $('#no');
+
+    // Create new record form
+    var newRecordForm = $('#web-custom-frm');
+
+    // Empty variable for inserting object later
     var boards = {};
 
+    // Get Boardname
     function getNameOfBoard(myArray, searchTerm){
           for(var i = 0, len = myArray.length; i < len; i++){
             if(myArray[i].id === searchTerm) return myArray[i].name;
@@ -20,7 +41,7 @@ $(document).ready(function() {
         }
     }).done(function(){
         $('#loader').fadeOut('slow');
-        $('body').removeClass('no-scroll');
+        body.removeClass('no-scroll');
         getAllWebHooks();
     });
 
@@ -35,8 +56,8 @@ $(document).ready(function() {
     // Alert box on 'remove' click in Webhooks Modal box
     $('#modal-webhooks-rmv').click(function(e){
         // Add blue bg to remove btn's
-        $('#yes').addClass('blue-bg');
-        $('#no').addClass('blue-bg');
+        yes.addClass('blue-bg');
+        no.addClass('blue-bg');
 
         // Show remove approval
         e.preventDefault();
@@ -45,7 +66,7 @@ $(document).ready(function() {
 
 
     // if yes
-    $('#yes').click(function(e){
+    yes.click(function(e){
         e.preventDefault();
 
         var data = $('#webhooks-modal-form').serialize();
@@ -61,25 +82,25 @@ $(document).ready(function() {
         }).
         fail(function(err) {
             // Error feedback
-            $('#submit-error').empty();
-            $('#submit-error').append('<h3>Error in deleting the record!</h3>');
-            $('#submit-error').fadeIn(400).delay(800).fadeOut(800);
+            recordError.empty();
+            recordError.append('<h3>Error in deleting the record!</h3>');
+            recordError.fadeIn(400).delay(800).fadeOut(800);
         }).
         done(function(err) {
             // Success feedback
-            $('#submit-success').empty();
-            $('#submit-success').append('<h3>Record deleted!</h3>');
-            $('#submit-success').fadeIn(400).delay(800).fadeOut(800);
+            recordSuccess.empty();
+            recordSuccess.append('<h3>Record deleted!</h3>');
+            recordSuccess.fadeIn(400).delay(800).fadeOut(800);
 
             // Remove blue bg from remove btn's
-            $('#yes').removeClass('blue-bg');
-            $('#no').removeClass('blue-bg');
+            yes.removeClass('blue-bg');
+            no.removeClass('blue-bg');
 
             $('#fieldset-info').remove();
             // Update notifier list (on frontpage)
             $('#approve-wrap').hide();
-            $('.webhooks').hide();
-            $('body').removeClass('no-scroll');
+            webhooks.hide();
+            body.removeClass('no-scroll');
         }).
         always(function(){
                 getAllWebHooks();
@@ -87,25 +108,19 @@ $(document).ready(function() {
     });
 
     // if no
-    $('#no').click(function(){
+    no.click(function(){
         $('#approve-wrap').hide();
 
         // Remove blue bg from remove btn's
         $(this).removeClass('blue-bg');
-        $('#yes').removeClass('blue-bg');
+        yes.removeClass('blue-bg');
     });
 
     // Close modal box on close click
     $('.close-btn').click(function() {
-        $('.webhooks').hide();
-        $('body').removeClass('no-scroll');
+        webhooks.hide();
+        body.removeClass('no-scroll');
     });
-
-    //
-    //
-    // ******* Webhooks code starts ********
-    //
-    //
 
     // Add new record
     $('#web-submit').click(function(e){
@@ -113,25 +128,25 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             url:'mongies/webhooks/post',
-            data: $('#web-custom-frm').serialize()
+            data: newRecordForm.serialize()
         }).
         success(function(res) {
         }).
         fail(function(err) {
             // Error feedback
-            $('#submit-error').empty();
-            $('#submit-error').append('<h3>Error in creating a new record!</h3>');
-            $('#submit-error').fadeIn(400).delay(800).fadeOut(800);
-            $('#web-answer').html('<center><strong>'+err.responseText+'</strong></center>');
+            recordError.empty();
+            recordError.append('<h3>Error in creating a new record!</h3>');
+            recordError.fadeIn(400).delay(800).fadeOut(800);
+            recordError.html('<center><strong>'+err.responseText+'</strong></center>');
         }).
         done(function(err) {
             // Success Feedback
-            $('#submit-succes').empty();
-            $('#submit-success').append('<h3>Created new record!</h3>');
-            $('#submit-success').fadeIn(400).delay(800).fadeOut(800);
+            recordSuccess.empty();
+            recordSuccess.append('<h3>Created new record!</h3>');
+            recordSuccess.fadeIn(400).delay(800).fadeOut(800);
 
             // Reset form on submit
-            $('#web-custom-frm')[0].reset();
+            $newRecordForm[0].reset();
         }).
         always(function(err){
             // get all webhooks
@@ -140,8 +155,7 @@ $(document).ready(function() {
     });
 
     /* Webhooks API update */
-
-    $("#modal-webhooks-submit").click(function(e){
+    modalSubmit.click(function(e){
         e.preventDefault();
         var data = $('#webhooks-modal-form').serialize();
         // Ajax call to php/update.php with the right data (all data from the single notifier).
@@ -155,15 +169,15 @@ $(document).ready(function() {
         }).
         fail(function(err) {
             // Error feedback
-            $('#submit-error').empty();
-            $('#submit-error').append('<h3>Error in updating the record!</h3>');
-            $('#submit-error').fadeIn(400).delay(800).fadeOut(800);
+            recordError.empty();
+            recordError.append('<h3>Error in updating the record!</h3>');
+            recordError.fadeIn(400).delay(800).fadeOut(800);
         }).
         done(function(err) {
             // Success feedback
-            $('#submit-success').empty();
-            $('#submit-success').append('<h3>Updated record!</h3>');
-            $('#submit-success').fadeIn(400).delay(800).fadeOut(800);
+            recordSuccess.empty();
+            recordSuccess.append('<h3>Updated record!</h3>');
+            recordSuccess.fadeIn(400).delay(800).fadeOut(800);
         }).
         always(function(err){
             // get all webhooks
@@ -172,7 +186,7 @@ $(document).ready(function() {
     });
 
     // Recreate WebHook
-    $('#modal-webhooks-recreate').click(function(e){
+    modalReCreate.click(function(e){
         e.preventDefault();
         $.ajax({
             type: 'POST',
@@ -183,18 +197,18 @@ $(document).ready(function() {
         }).
         fail(function(err) {
             // Error feedback
-            $('#submit-error').empty();
-            $('#submit-error').append('<h3>Error in creating a new record!</h3>');
-            $('#submit-error').fadeIn(400).delay(800).fadeOut(800);
+            recordError.empty();
+            recordError.append('<h3>Error in creating a new record!</h3>');
+            recordError.fadeIn(400).delay(800).fadeOut(800);
             $('#web-answer').html('<center><strong>'+err.responseText+'</strong></center>');
         }).
         done(function(err) {
             // Success Feedback
-            $('#submit-success').empty();
-            $('#submit-success').append('<h3>Created new record!</h3>');
-            $('#submit-success').fadeIn(400).delay(800).fadeOut(800);
-            $('.webhooks').hide();
-            $('body').removeClass('no-scroll');
+            recordSuccess.empty();
+            recordSuccess.append('<h3>Created new record!</h3>');
+            recordSuccess.fadeIn(400).delay(800).fadeOut(800);
+            webhooks.hide();
+            body.removeClass('no-scroll');
             // Reset form on submit
         }).
         always(function(){
@@ -241,8 +255,8 @@ $(document).ready(function() {
 
     // Edit / Save fieldsets
     $( '#web-sub-frm' ).on( 'click', 'div.edit-this', function(e) {
-        $('.webhooks').show();
-        $('body').addClass('no-scroll');
+        webhooks.show();
+        body.addClass('no-scroll');
 
         // Set currentId (from the pressed notifier)
         var currentId = $(this).parent('fieldset').find('.webhook-id').val();
@@ -258,11 +272,11 @@ $(document).ready(function() {
           $('.mySoloBoards').val(data[0].idModel);
 
           if(data[0].active === false){
-            $('#modal-webhooks-submit').hide();
-            $('#modal-webhooks-recreate').show();
+            modalSubmit.hide();
+            modalReCreate.show();
           } else {
-            $('#modal-webhooks-submit').show();
-            $('#modal-webhooks-recreate').hide();
+            modalSubmit.show();
+            modalReCreate.hide();
           }
 
         }, "json").done(function(data){
