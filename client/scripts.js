@@ -1,19 +1,15 @@
-
 $(document).ready(function() {
+
+    var success = $('#submit-success');
+
     var boards = {};
 
-    //
-    //
-    // ******* Global changes ********
-    //
-    //
     function getNameOfBoard(myArray, searchTerm){
           for(var i = 0, len = myArray.length; i < len; i++){
             if(myArray[i].id === searchTerm) return myArray[i].name;
           }
           return -1;
       }
-
 
     // Get all boards from Trello
     var getAllBoards = $.get( '/getBoards', function( data ) {
@@ -36,7 +32,7 @@ $(document).ready(function() {
             alert('NodeJS server not responding.... Please refresh the page (we should make a reconnect function)');
     });
 
-    // Alert box on remove click in Webhooks Modal box
+    // Alert box on 'remove' click in Webhooks Modal box
     $('#modal-webhooks-rmv').click(function(e){
         // Add blue bg to remove btn's
         $('#yes').addClass('blue-bg');
@@ -229,7 +225,8 @@ $(document).ready(function() {
                     }
 
                     var textToInsert = '';
-                    textToInsert += "<fieldset class='current_webhooks " + doesNotExistClass + " clearfix'>";
+                    textToInsert += "<fieldset class='current_webhooks clearfix'>";
+                    textToInsert += "<div class='" + doesNotExistClass + "'></div>";
                     textToInsert += "<input type='hidden' class='field-info-item webhook-id' name='id' value='"+ val._id +"' disabled>";
                     textToInsert += "<input type='text' class='field-info-item board-name' value='" + getNameOfBoard(boards, val.idModel) + "' disabled>";
                     textToInsert += "<input type='text' class='field-info-item webhook-last-updated' value='"+ val.updated_at.substr(0, 10) +"' disabled>";

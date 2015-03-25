@@ -636,6 +636,7 @@ input#sub-frm-submit:hover {
     margin: 0 auto;
     box-sizing: border-box;
     padding: 0;
+    position: relative;
 }
 
 input[type="text"] {
@@ -723,11 +724,18 @@ textarea#modal-desc {
     background: #2ECC71;
 }
 
-/* Does the webhook exist at Trello */
-fieldset.doesNotExistAtTrello {
-    border-left: 3px solid #e74c3c;
+div.doesNotExistAtTrello {
+    background: #e74c3c;
+    position: absolute;
+    left: 0;
+    width: 3px;
+    height: 100%;
 }
 
-fieldset.doesExistAtTrello {
-    border-left: 3px solid #2ECC71;
+div.doesExistAtTrello {
+    background: #2ECC71;
+    position: absolute;
+    left: 0;
+    width: 3px;
+    height: 100%;
 }
