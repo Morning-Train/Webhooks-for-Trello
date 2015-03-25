@@ -38,7 +38,7 @@ Read https://trello.com/docs/gettingstarted/index.html#getting-an-application-ke
 Read https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user
 
 #### 5:
-At last you can call node app.js, and should be running at localhost:3001 :)
+At last you can call node app.js, and the server will (as standard) be running at localhost:3001
 
 ### Browser support
 - IE10+
