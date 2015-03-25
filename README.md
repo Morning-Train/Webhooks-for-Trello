@@ -14,8 +14,8 @@ http://www.mongodb.org/downloads
 In your terminal write:
 
 
-    $ git clone git@github.com:Morning-Train/Trello-Train.git
-    $ cd trellotrain
+    $ git clone https://github.com/Morning-Train/Webhooks-for-Trello.git
+    $ cd Webhooks-for-Trello
     $ npm install
 
 
