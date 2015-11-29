@@ -1,5 +1,7 @@
-## Webhooks for Trello
+## About  Webhooks for Trello
 Webhooks for Trello is made in NodeJS.
+
+This was coded on an early [morningtrain.dk](http://morningtrain.dk/)
 
 ### Setting up "Webhooks for Trello".
 #### 1:
